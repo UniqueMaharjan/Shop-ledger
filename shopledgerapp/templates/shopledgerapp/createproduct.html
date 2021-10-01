@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+
+{% block content  %}
+<form action="" method="POST">
+{% csrf_token %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <h2>customer{{form.id}}</h2>
+        {{form.as_p}}
+        <input type="submit" value="Add">
+    </form>
+    
+</form>
+{% endblock  %}

@@ -1,0 +1,61 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th></th>
+                <th></th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for details in products %}
+            <tr>
+                <td>{{details.name}}</td> 
+                <td>-------</td>
+                <td> </td>
+                <td>{{details.price}}</td>
+            </tr>
+            
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'createP' %}"><input type="button" value="Add Product"></a>
+    
+    <br>
+    <h1>Todays Sale Recording: </h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th></th>
+                <th></th>
+                <th>No. of Pieces</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for customer in customer  %}
+            
+            <tr>
+                <td>{{customer.item}}</td>
+                <td>--------</td>
+                <td></td>
+                <td>{{customer.pieces}}</td>
+                <td></td>
+                <td><a href="{% url 'edit-entry' customer.id %}">Edit</a></td>
+                <td><a href="{% url 'delete-entry' customer.id %}">Delete</a></td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+    <a href="{% url 'create' %}"><input type="button" value="Create"></a>
+    <a href="{% url 'deleteAll-entry'%}"><input type="button" value="Delete All"></a>
+
+{% endblock %}
