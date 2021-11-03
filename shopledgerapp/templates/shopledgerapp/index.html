@@ -27,6 +27,7 @@
     
     <br>
     <h1>Todays Sale Recording: </h1>
+    <h4>Date: {{order.order_date|date}}</h4>
     <table>
         <thead>
             <tr>
@@ -35,7 +36,7 @@
                 <th></th>
                 <th>No. of Pieces</th>
                 <th></th>
-                <th></th>
+                <th>Total</th>
                 <th></th>
             </tr>
         </thead>
@@ -46,15 +47,19 @@
                 <td>{{customer.item}}</td>
                 <td>--------</td>
                 <td></td>
-                <td>{{customer.pieces}}</td>
+                <td>{{customer.quantity}}</td>
                 <td></td>
+                <td>{{customer.get_total}}</td>
                 <td><a href="{% url 'edit-entry' customer.id %}">Edit</a></td>
                 <td><a href="{% url 'delete-entry' customer.id %}">Delete</a></td>
             </tr>
             {% endfor %}
-
+        
         </tbody>
+        <br>
     </table>
+    <p>-------------------------------------------------</p>
+    <h4>Total: {{order.get_product_total}}</h4>
     <a href="{% url 'create' %}"><input type="button" value="Create"></a>
     <a href="{% url 'deleteAll-entry'%}"><input type="button" value="Delete All"></a>
 

@@ -4,7 +4,10 @@
 
 <form action="" method="POST">
     {% csrf_token %}
-        <h2>customer{{form.id}}</h2>
+        <label>
+            <p>Customer id:</p>
+            <input type="text" name = "customer_id">
+        </label>
         {{form.as_p}}
         <input type="submit" value="Add">
 </form>

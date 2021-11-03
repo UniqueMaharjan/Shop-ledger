@@ -1,17 +1,20 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from .models import ProductDetail, CustomerData, totalPrice
+from .models import *
 from .forms import dataEntry,productEntry
 # Create your views here.
 
 def index(request):
+    customer = request.GET.get('customer_id')
+    order,created = Order.objects.get_or_create(customer = customer) 
     product_detail = ProductDetail.objects.all()
     customer_detail = CustomerData.objects.all()
-    total = totalPrice
+
     content = {
+        'order':order,
         'products':product_detail,
         'customer':customer_detail,
-        'price':total,
+    
     }
 
     return render(request,'shopledgerapp/index.html',content)
